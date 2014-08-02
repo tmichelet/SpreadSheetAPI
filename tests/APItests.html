@@ -1,0 +1,66 @@
+<html>
+    <body>
+        <div id="testsResults">
+            <p>Tests running...</p>
+        </div>
+    </body>
+<script src="../spreadSheet.js"/></script>
+<script>
+    // tests helpers
+    var _updateUI = function(name, result) {
+        var color = (result)? "green" : "red";
+        document.getElementById('testsResults').innerHTML += '<p style="color:' + color + '">' + name + ': ' + result + '</p>';
+    };
+    var _test = function(name, b) {
+        return function(a) {_updateUI(name, (JSON.stringify(a) === JSON.stringify(b)))};
+    };
+
+    var _call2 = function(params) {
+        spreadSheet._call2(params);
+    };
+
+    var myTestSpreadsheet = "Test SpreadSheetAPI";
+    var myUserName = 'michelet.tristan@gmail.com';
+    var mySpreadsheetURL = 'https://docs.google.com/spreadsheets/d/1IF3rPgEA20aZ0zA5JQg66Dy8LOh1GBkFvHc1gZ8jLIc/edit';
+    var spreadSheet = new SpreadSheet(myTestSpreadsheet);
+
+
+    var assert_helloWorld = _test('assert_helloWorld', {hello: 'world'});
+    spreadSheet._helloWorld(assert_helloWorld);
+
+    var assert_getUserName = _test('assert_getUserName', {user: myUserName});
+    spreadSheet.getUserName(assert_getUserName);
+
+    var assert_getUserSpreadSheet = _test('assert_getUserSpreadSheet', {spreadSheetURL: mySpreadsheetURL});
+    spreadSheet.getUserSpreadSheet(myTestSpreadsheet, assert_getUserSpreadSheet);
+
+    // var assert_setUserSpreadSheet = _test('assert_setUserSpreadSheet', {status: {}});
+    // spreadSheet.setUserSpreadSheet(myTestSpreadsheet, 'hey', assert_setUserSpreadSheet)
+    // spreadSheet.getUserSpreadSheet(myTestSpreadsheet, _test('assert_getUserSpreadSheet', {spreadSheetURL: 'hey'}));
+    // spreadSheet.setUserSpreadSheet(myTestSpreadsheet, mySpreadsheetURL, assert_setUserSpreadSheet)
+
+
+    // var assert_createSpreadSheet = _test('assert_createSpreadSheet', {});
+    // spreadSheet._call2('callback=assert_createSpreadSheet&method=createSpreadSheet&name=testSpreadsheet');
+
+    // var assert_createSheet = _test('assert_createSheet', {});
+    // spreadSheet._call2('callback=assert_createSheet&method=createSheet');
+
+
+
+    // var testSpreadsheetData = {"content":[{"name":"first","id":0,"content":[[1,"",""],[2,3,""],["",4,5]]},{"name":"second","id":1,"content":[["a","b"],["c","d"]]}]};
+    // var assert_getSpreadSheet = _test('assert_getSpreadSheet', testSpreadsheetData);
+    // spreadSheet._call2('callback=assert_getSpreadSheet&method=getSpreadSheet&url=https://docs.google.com/spreadsheets/d/1IF3rPgEA20aZ0zA5JQg66Dy8LOh1GBkFvHc1gZ8jLIc/edit');
+
+    // var assert_getValue = _test('assert_getValue', {});
+    // spreadSheet._call2('callback=assert_getValue&method=getValue');
+
+    // var assert_insert = _test('assert_insert', {});
+    // spreadSheet._call2('callback=assert_insert&method=insert');
+
+    // var assert_wrong = _test('assert_wrong', {});
+    // spreadSheet._call2('callback=assert_wrong&method=wrong');
+
+
+</script>
+</html>

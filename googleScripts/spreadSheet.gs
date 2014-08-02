@@ -14,12 +14,15 @@ API:
 - getUserSpreadSheet(key)
 - setUserSpreadSheet(key, value)
 - getSpreadSheet(url, [sheetId | sheetName])
-- getValue(id, sheetId, key)
-- insert(id, sheetId, key, values, delimiter, [columnId])
+- getValue(url, sheetParams, key)
+- insert(url, sheetParams, key, values, delimiter, [columnId])
 
 Roadmap:
 - missing doGet requests and tests
 - bad doGet requests
+- hide api properties
+- setUserSpreadsheet status
+- fix inconsistant test
 - apps rights
 - readme
 - real example
@@ -168,11 +171,11 @@ function doGet(e) {
   // getSpreadSheet(url, [sheetId | sheetName])
   if(e.parameter.method === 'getSpreadSheet') return _setOutput(e, {content: getSpreadSheet(p.url, p.sheetParams)});
 
-  // getValue(id, sheetId, key)
-  if(e.parameter.method === 'getValue') return _setOutput(e, {value: getValue(p.id, p.sheetId, p.key)});
+  // getValue(url, sheetParams, key)
+  if(e.parameter.method === 'getValue') return _setOutput(e, {value: getValue(p.url, p.sheetParams, p.key)});
 
-  // insert(id, sheetId, key, values, delimiter, [columnId])
-  if(e.parameter.method === 'insert') return _setOutput(e, {status: insert(p.id, p.sheetId, p.key, p.values, p.delimiter, p.columnId)});
+  // insert(url, sheetParams, key, values, delimiter, [columnId])
+  if(e.parameter.method === 'insert') return _setOutput(e, {status: insert(p.url, p.sheetParams, p.key, p.values, p.delimiter, p.columnId)});
 
   return _setOutput(e, {status: "Request not found", availableMethods: ""});
 }
