@@ -22,6 +22,7 @@ Roadmap:
 - bad doGet requests
 - apps rights
 - readme
+- real example
 - how to execute / contribute
 - improve doGet tests
 - sort things to be faster

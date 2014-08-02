@@ -1,5 +1,6 @@
 /*
-  execute test_all from the script.google.com page to run API tests
+  Google script tests
+  To run, execute test_all from the script.google.com page, and check console (command + enter)
 */
 
 function test_all() {
@@ -91,7 +92,7 @@ function test_getSpreadSheet(url) {
 function _cleanTestSpreadSheet() {
   var testSpreadSheetName = "Test SpreadSheetAPI";
   var testSpreadSheetURL = getUserSpreadSheet(testSpreadSheetName);
-  try { // check if it has been deleted
+  try {  // check if it has been deleted
     SpreadsheetApp.openByUrl(testSpreadSheetURL);
   } catch(err) {
     testSpreadSheetURL = null;
