@@ -18,16 +18,16 @@ API:
 - insert(url, sheetParams, key, values, delimiter, [columnId])
 
 Roadmap:
-- missing doGet requests and tests
+- readme
 - bad doGet requests
 - hide api properties
 - setUserSpreadsheet status
+- missing tests
 - fix inconsistant test
 - apps rights
-- readme
 - real example
 - how to execute / contribute
-- improve doGet tests
+- improve doGet tests (node?)
 - sort things to be faster
 
 see https://developers.google.com/apps-script/reference
